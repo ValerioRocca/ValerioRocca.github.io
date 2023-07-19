@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <title></title>
+    <style>
+        body {
+            font-family: 'Raleway', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+
+        header {
+            font-family: 'Raleway', sans-serif;
+            background-color: #f7f7f7;
+            color: #303133;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-bottom: 1px solid #E4E4E4;
+        }
+
+        header a {
+            color: #303133;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 18px;
+            font-weight: bold;
+            border-bottom: 2px solid transparent;
+        }
+
+        header a.active {
+            border-bottom-color: #303133;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 56px;
+            font-weight: normal;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f7f7f7;
+            /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); */
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .project {
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #f7f7f7;
+            border-radius: 5px;
+            display: none; /* hide projects by default */
+        }
+
+        .project h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        .project p {
+            margin-bottom: 0;
+        }
+
+        .tags {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .tags a {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 5px;
+            background-color: #f7f7f7;
+            color: #777777;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+
+        .tags a.active {
+            background-color: #333;
+            color: #f7f7f7;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#" class="active">Projects</a>
+            <a href="https://valeriorocca.github.io/about-me" target="_blank">About me</a>
+            <a href="https://valeriorocca.github.io/contacts" target="_blank">Contacts</a>
+        </nav>
+    </header>
+    <main>
+        <div class="tags">
+            <a href="#" class="active" data-tag="all">All</a>
+            <a href="#" data-tag="python">Python</a>
+            <a href="#" data-tag="spark">Spark</a>
+            <a href="#" data-tag="sql">SQL</a>
+            <a href="#" data-tag="machine-learning">Machine Learning</a>
+            <a href="#" data-tag="deep-learning">Deep Learning</a>
+        </div>
+
+        <div class="project" data-tags="python machine-learning">
+            <h3>Project Title 1</h3>
+            <p>Project description goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.</p>
+            <p><a href="#">View Project</a></p>
+        </div>
+
+        <div class="project" data-tags="deep-learning">
+            <h3>Project Title 2</h3>
+            <p>Project description goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.</p>
+            <p><a href="#">View Project</a></p>
+        </div>
+
+        <div class="project" data-tags="deep-learning sql">
+            <h3>Project Title 3</h3>
+            <p>Project descriptiongoes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.</p>
+            <p><a href="#">View Project</a></p>
+        </div>
+    </main>
+
+    <script>
+        const tags = document.querySelectorAll('.tags a');
+
+        tags.forEach(tag => {
+            tag.addEventListener('click', e => {
+                e.preventDefault();
+                const clickedTag = e.target.dataset.tag;
+
+                if (clickedTag === 'all') {
+                    showAllProjects();
+                } else {
+                    filterProjects(clickedTag);
+                }
+
+                tags.forEach(tag => {
+                    tag.classList.remove('active');
+                });
+
+                e.target.classList.add('active');
+            });
+        });
+
+        function showAllProjects() {
+            const projects = document.querySelectorAll('.project');
+            projects.forEach(project => {
+                project.style.display = 'block';
+            });
+        }
+
+        function filterProjects(tag) {
+            const projects = document.querySelectorAll('.project');
+            projects.forEach(project => {
+                const tags = project.dataset.tags.split(' ');
+                if (tags.includes(tag)) {
+                    project.style.display = 'block';
+                } else {
+                    project.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
