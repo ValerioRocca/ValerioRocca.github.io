@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <title></title>
+    <style>
+        ::selection {
+        background-color: #1d3557;
+        color: #f7f7f7;
+    }
+        a.github-link {
+            color: #777777;
+        }
+
+        a.github-link:hover {
+            color: #777777;
+        }
+        
+        a.github-link.active {
+            color: #777777;
+        }
+        body {
+            font-family: 'Raleway', sans-serif;
+            margin: 0;
+            padding: 0;
+			padding-top: 60px;
+            background-color: #f7f7f7;
+        }
+
+        header {
+            font-family: 'Raleway', sans-serif;
+            background-color: #1d3557;
+            color: #303133;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* border-bottom: 2px solid #E4E4E4; */
+            font-weight: bold;
+        }
+
+		header.fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        header a {
+            display: inline-block;
+            padding: 5px 10px;
+             border-radius: 5px;
+            background-color: #1d3557;
+            color: #f7f7f7;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+
+        header a.active {
+            background-color: #f7f7f7;
+            color: #1d3557;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 56px;
+            font-weight: normal;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f7f7f7;
+            /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); */
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            line-height: 1.5;
+            margin-bottom: 20px;
+            color: #777777;
+        }
+
+        .project {
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #f7f7f7;
+            border-radius: 5px;
+            display: none; /* hide projects by default */
+        }
+
+        .project h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 30px;
+            color: #303133; 
+        }
+
+        .project p {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <header class="fixed-header">
+        <nav>
+            <a href="https://valeriorocca.github.io/projects">Projects</a>
+            <a href="https://valeriorocca.github.io/about-me">About me</a>
+            <a href="#" class="active">Contacts</a>
+        </nav>
+    </header>
+    <main>
+
+        <div class="project">
+            <h3>Contacts</h3>
+            <p><strong>Address</strong>: via Cascina Uccelli, 2E, Barzago (LC), 23890, Italy</p>
+           <p><strong>Email</strong>: valeriorocca999@gmail.com</p>
+           <p><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/valerio-rocca/" class="github-link">https://www.linkedin.com/in/valerio-rocca/</a></p>
+           <p><strong>GitHub</strong>: <a href="https://github.com/ValerioRocca" class="github-link">https://github.com/ValerioRocca</a></p>
+
+           
+            
+            <p></p>
+
+        </div>
+    </main>
+
+    <script>
+                const tags = document.querySelectorAll('.tags a');
+
+        tags.forEach(tag => {
+            tag.addEventListener('click', e => {
+                e.preventDefault();
+                const clickedTag = e.target.dataset.tag;
+
+                if (clickedTag === 'all') {
+                    showAllProjects();
+                } else {
+                    filterProjects(clickedTag);
+                }
+
+                tags.forEach(tag => {
+                    tag.classList.remove('active');
+                });
+
+                e.target.classList.add('active');
+            });
+        });
+
+        function showAllProjects() {
+            const projects = document.querySelectorAll('.project');
+            projects.forEach(project => {
+                project.style.display = 'block';
+            });
+        }
+
+        function filterProjects(tag) {
+            const projects = document.querySelectorAll('.project');
+            projects.forEach(project => {
+                const tags = project.dataset.tags.split(' ');
+                if (tags.includes(tag)) {
+                    project.style.display = 'block';
+                } else {
+                    project.style.display = 'none';
+                }
+            });
+        }
+       
+        document.addEventListener('DOMContentLoaded', function() {
+            showAllProjects();
+        });
+    </script>
+</body>
+</html>
