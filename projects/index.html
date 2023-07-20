@@ -6,6 +6,13 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <title></title>
     <style>
+        ::selection {
+        background-color: #DDE23B;
+        color: #f7f7f7;
+    }
+        a:visited {
+          text-decoration: none; /* Remove underline from visited links */
+        }
         body {
             font-family: 'Raleway', sans-serif;
             margin: 0;
@@ -23,19 +30,22 @@
             flex-direction: column;
             align-items: center;
             border-bottom: 1px solid #E4E4E4;
+            font-weight: bold;
         }
 
         header a {
+            display: inline-block;
+            padding: 5px 10px;
+            /* border-radius: 5px; */
+            background-color: #f7f7f7;
             color: #303133;
             text-decoration: none;
-            margin: 0 20px;
-            font-size: 18px;
-            font-weight: bold;
-            border-bottom: 2px solid transparent;
+            margin-right: 10px;
         }
 
         header a.active {
-            border-bottom-color: #303133;
+            background-color: #333;
+            color: #f7f7f7;
         }
 
         h1 {
@@ -62,6 +72,7 @@
         p {
             line-height: 1.5;
             margin-bottom: 20px;
+            color: #777777;
         }
 
         .project {
@@ -75,7 +86,8 @@
         .project h3 {
             margin-top: 0;
             margin-bottom: 10px;
-            font-size: 20px;
+            font-size: 30px;
+            color: #303133; 
         }
 
         .project p {
@@ -90,7 +102,7 @@
         .tags a {
             display: inline-block;
             padding: 5px 10px;
-            border-radius: 5px;
+            /* border-radius: 5px; */
             background-color: #f7f7f7;
             color: #777777;
             text-decoration: none;
@@ -98,9 +110,10 @@
         }
 
         .tags a.active {
-            background-color: #333;
+            background-color: #303133;
             color: #f7f7f7;
         }
+        
     </style>
 </head>
 <body>
@@ -114,34 +127,48 @@
     <main>
         <div class="tags">
             <a href="#" class="active" data-tag="all">All</a>
-            <a href="#" data-tag="python">Python</a>
+            <a href="#" data-tag="ML-DL">Machine & Deep Learning</a>
             <a href="#" data-tag="spark">Spark</a>
-            <a href="#" data-tag="sql">SQL</a>
-            <a href="#" data-tag="machine-learning">Machine Learning</a>
-            <a href="#" data-tag="deep-learning">Deep Learning</a>
+            <a href="#" data-tag="other">R and others</a>
         </div>
 
-        <div class="project" data-tags="python machine-learning">
-            <h3>Project Title 1</h3>
-            <p>Project description goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.</p>
-            <p><a href="#">View Project</a></p>
+        <div class="project" data-tags="ML-DL">
+            <h3>AdaSVRF & SPIDER-FW for constrained optimization</h3>
+            <p>Frank-Wolfe algorithms occupy a unique position in constrained optimization, as they alleviate both the objective function and the constrained set's computational burdens. In this project, my colleagues and I built from scratch and evaluated two state-of-the-art Frank Wolfe algorithms using a ℓ1-ball constraint.</p>
+            <p><a href="https://github.com/ValerioRocca/Frank-Wolfe">View the project on GitHub</a></p>
         </div>
 
-        <div class="project" data-tags="deep-learning">
-            <h3>Project Title 2</h3>
-            <p>Project description goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.</p>
-            <p><a href="#">View Project</a></p>
+        <div class="project" data-tags="spark">
+            <h3>Approximate item frequency for Big Data streams</h3>
+            <p>In a Big Data setting, even simple tasks - such as counting the frequencies of a stream of items - can be unfeasible because of the computational requirements. In this project, I implemented the Count Sketch algorithm for approximating the frequencies of a stream of items using PySpark.</p>
+            <p><a href="https://github.com/ValerioRocca/pyspark-count-sketch">View the project on GitHub</a></p>
         </div>
 
-        <div class="project" data-tags="deep-learning sql">
-            <h3>Project Title 3</h3>
-            <p>Project descriptiongoes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.</p>
-            <p><a href="#">View Project</a></p>
+        <div class="project" data-tags="ML-DL">
+            <h3>Feature selection in psychometric questionnaires</h3>
+            <p>The ratio between the number of participants and the number of questions in psychometric questionnaires can be low. This usually makes data unsuitable for Machine Learning applications. In this notebook, I explore solutions to this problem by studying different feature selection techniques over the PID-5 dataset.</p>
+            <p><a href="https://github.com/ValerioRocca/malingering-detection">View the project on GitHub</a></p>
+        </div>
+        <div class="project" data-tags="ML-DL">
+            <h3>Block Coordinate Schemes for high-dimensional datasets</h3>
+            <p>Famous optimizers such as Adam and RMSProp are not always the best choice to perform Gradient Descent. In this project, me and my colleagues implemented from scratch two Block Coordinate Schemes to solve a high-dimensional semi-supervised learning task. </p>
+            <p><a href="https://github.com/ValerioRocca/block-coordinate-gradient-descent">View the project on GitHub</a></p>
+        </div>
+        <div class="project" data-tags="spark">
+            <h3>Triangle count in a Big Data setting</h3>
+            <p>The project's objective was to estimate the number of triangles in an undirected graph using two PySpark algorithms. The algorithms were then tested on the Orkut dataset using CloudVeneto's cluster.</p>
+            <p><a href="https://github.com/ValerioRocca/spark-triangle-count">View the project on GitHub</a></p>
+        </div>
+        <div class="project" data-tags="other">
+            <h3>Low-carbon electricity generation: a comprehensive analysis</h3>
+            <p>In this project a colleague of mine and I developed a comprehensive analysis of low-carbon electricity generation by exploring the past, the current, and the possible future trends using R.
+            </p>
+            <p><a href="https://github.com/ValerioRocca/low_carbon_electricity_analysis">View the project on GitHub</a></p>
         </div>
     </main>
 
     <script>
-        const tags = document.querySelectorAll('.tags a');
+                const tags = document.querySelectorAll('.tags a');
 
         tags.forEach(tag => {
             tag.addEventListener('click', e => {
