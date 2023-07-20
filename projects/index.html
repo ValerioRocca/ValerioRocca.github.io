@@ -25,6 +25,7 @@
             font-family: 'Raleway', sans-serif;
             margin: 0;
             padding: 0;
+			padding-top: 60px;
             background-color: #f7f7f7;
         }
 
@@ -39,6 +40,13 @@
             align-items: center;
             /* border-bottom: 2px solid #E4E4E4; */
             font-weight: bold;
+        }
+
+		header.fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
         }
 
         header a {
@@ -125,7 +133,7 @@
     </style>
 </head>
 <body>
-    <header>
+    <header class="fixed-header">
         <nav>
             <a href="#" class="active">Projects</a>
             <a href="https://valeriorocca.github.io/about-me" target="_blank">About me</a>
